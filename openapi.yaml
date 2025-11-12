@@ -1,0 +1,274 @@
+openapi: 3.0.0
+info:
+  title: Syllabus API
+  version: 0.1.0
+  description: シラバスを管理するためのRESTful API
+servers:
+  - url: /api/v1
+    description: API version 1
+
+components:
+  schemas:
+    Syllabus:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+          example: 1
+        title_ja:
+          type: string
+          example: "プログラミング応用"
+        title_en:
+          type: string
+          example: "Applied Programming"
+        teacher_name:
+          type: string
+          example: "田村 浩士"
+        school_year:
+          type: integer
+          example: 2
+        semester:
+          type: string
+          example: "後期"
+        num_credits:
+          type: integer
+          example: 2
+        target_grade:
+          type: string
+          example: "2年"
+        course_type:
+          type: string
+          example: "専門科目"
+        overview_ja:
+          type: string
+          example: "Django REST Framework を使った Web API 開発..."
+        overview_en:
+          type: string
+          example: "Developing Web APIs using Django REST Framework..."
+        prerequisites_ja:
+          type: string
+          example: "プログラミング基礎"
+        prerequisites_en:
+          type: string
+          example: "Fundamentals of Programming"
+        textbook:
+          type: string
+          example: "指定なし"
+        reference_book:
+          type: string
+          example: "公式ドキュメント"
+        grading_policy_ja:
+          type: string
+          example: "最終課題 60%, 中間課題 40%"
+        grading_policy_en:
+          type: string
+          example: "Final Project 60%, Midterm Assignments 40%"
+        notes_ja:
+          type: string
+          example: "AIを積極的に活用すること"
+        notes_en:
+          type: string
+          example: "Actively utilize AI"
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          example: "2025-10-29T10:00:00+09:00"
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          example: "2025-10-29T10:00:00+09:00"
+      required:
+        - title_ja
+        - teacher_name
+        - school_year
+        - semester
+        - num_credits
+        - course_type
+
+    PaginatedSyllabusList:
+      type: object
+      properties:
+        count:
+          type: integer
+          example: 120
+        next:
+          type: string
+          format: uri
+          nullable: true
+          example: "/api/v1/syllabuses/?page=3"
+        previous:
+          type: string
+          format: uri
+          nullable: true
+          example: "/api/v1/syllabuses/?page=1"
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Syllabus'
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+security:
+  - bearerAuth: []
+
+paths:
+  /syllabuses/:
+    get:
+      summary: シラバス一覧の取得
+      description: シラバスの一覧をページネーション付きで返します。
+      operationId: listSyllabuses
+      tags:
+        - Syllabuses
+      responses:
+        '200':
+          description: シラバスの一覧
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedSyllabusList'
+    post:
+      summary: 新規シラバスの作成
+      description: 新しいシラバスを作成します。認証が必要です。
+      operationId: createSyllabus
+      tags:
+        - Syllabuses
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Syllabus'
+      responses:
+        '201':
+          description: 作成成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Syllabus'
+        '400':
+          description: リクエストが無効
+        '401':
+          description: 認証エラー
+
+  /syllabuses/{id}/:
+    get:
+      summary: 特定シラバスの取得
+      description: IDに基づいて特定のシラバスの詳細を返します。
+      operationId: retrieveSyllabus
+      tags:
+        - Syllabuses
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: シラバスのID
+      responses:
+        '200':
+          description: シラバスの詳細
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Syllabus'
+        '404':
+          description: 見つかりません
+    put:
+      summary: 特定シラバスの更新 (全体)
+      description: 特定のシラバスを更新します。認証が必要です。
+      operationId: updateSyllabus
+      tags:
+        - Syllabuses
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: シラバスのID
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Syllabus'
+      responses:
+        '200':
+          description: 更新成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Syllabus'
+        '400':
+          description: リクエストが無効
+        '401':
+          description: 認証エラー
+        '404':
+          description: 見つかりません
+    patch:
+      summary: 特定シラバスの更新 (部分)
+      description: 特定のシラバスを部分的に更新します。認証が必要です。
+      operationId: partialUpdateSyllabus
+      tags:
+        - Syllabuses
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: シラバスのID
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Syllabus'
+      responses:
+        '200':
+          description: 更新成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Syllabus'
+        '400':
+          description: リクエストが無効
+        '401':
+          description: 認証エラー
+        '404':
+          description: 見つかりません
+    delete:
+      summary: 特定シラバスの削除
+      description: 特定のシラバスを削除します。認証が必要です。
+      operationId: destroySyllabus
+      tags:
+        - Syllabuses
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: シラバスのID
+      responses:
+        '204':
+          description: 削除成功 (No Content)
+        '401':
+          description: 認証エラー
+        '404':
+          description: 見つかりません
