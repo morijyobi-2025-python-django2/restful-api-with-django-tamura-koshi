@@ -1,16 +1,16 @@
+from django.contrib import admin  # <-- 1. この行を追加
 from django.urls import include, path
 from rest_framework import routers
 
 from tutorial.quickstart import views
 
-# 1. ルーターを作成
 router = routers.DefaultRouter()
-# 2. ViewSet をルーターに登録
 router.register(r'users', views.UserViewSet)
 router.register(r'groups', views.GroupViewSet)
 
-# 3. URLパターンを設定
 urlpatterns = [
+    path('admin/', admin.site.urls),  # <-- 2. この行を追加
+    
     # routerが自動生成したURL (e.g., /users/, /groups/) を読み込む
     path('', include(router.urls)),
     
