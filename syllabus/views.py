@@ -7,5 +7,8 @@ class SyllabusViewSet(viewsets.ModelViewSet):
     serializer_class = SyllabusSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     
-    # 検索対象とするフィールドを指定
-    filterset_fields = ['school_year', 'semester', 'course_type', 'teacher_name'] # <-- この行を追加
+    # 絞り込み (完全一致)
+    filterset_fields = ['school_year', 'semester', 'course_type', 'teacher_name']
+    
+    # 全文検索 (あいまい検索)
+    search_fields = ['title_ja', 'title_en', 'overview_ja', 'overview_en', 'teacher_name'] # <-- この行を追加
