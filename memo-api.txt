@@ -1,0 +1,49 @@
+実装内容 (ver 0.1)
+
+GET /api/v1/syllabuses/
+- シラバス（Syllabus）の一覧を返す
+- ページネーション（Pagination）に対応する
+
+GET /api/v1/syllabuses/{id}/
+- 特定のシラバスの詳細を返す
+
+POST /api/v1/syllabuses/
+- 新しいシラバスを作成する
+- 認証（Authentication）が必要
+
+PUT /api/v1/syllabuses/{id}/
+- 特定のシラバスを更新する
+- 認証が必要
+
+PATCH /api/v1/syllabuses/{id}/
+- 特定のシラバスを部分的に更新する
+- 認証が必要
+
+DELETE /api/v1/syllabuses/{id}/
+- 特定のシラバスを削除する
+- 認証が必要
+
+
+シラバス詳細 ページ に掲載したい内容 (データ項目)
+
+- "id": 1,
+- "title_ja": "プログラミング応用",
+- "title_en": "Applied Programming",
+- "teacher_name": "田村 浩士",
+- "school_year": 2,
+- "semester": "後期",
+- "num_credits": 2,
+- "target_grade": "2年",
+- "course_type": "専門科目",
+- "overview_ja": "Django REST Framework を使った Web API 開発...",
+- "overview_en": "Developing Web APIs using Django REST Framework...",
+- "prerequisites_ja": "プログラミング基礎",
+- "prerequisites_en": "Fundamentals of Programming",
+- "textbook": "指定なし",
+- "reference_book": "公式ドキュメント",
+- "grading_policy_ja": "最終課題 60%, 中間課題 40%",
+- "grading_policy_en": "Final Project 60%, Midterm Assignments 40%",
+- "notes_ja": "AIを積極的に活用すること",
+- "notes_en": "Actively utilize AI",
+- "created_at": "2025-10-29T10:00:00+09:00",
+- "updated_at": "2025-10-29T10:00:00+09:00"
