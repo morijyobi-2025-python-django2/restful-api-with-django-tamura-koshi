@@ -61,7 +61,32 @@ curl http://localhost:8000/api/syllabi/1/
 ```
 
 ### レスポンス
-(テスト実施予定)
+- ✅ ステータスコード: 200 OK
+- ✅ 指定IDのシラバスが返される (id=1)
+- ✅ すべてのフィールドが含まれる
+- ✅ class_sessions がネストされている
+
+### 確認項目
+- [x] ステータスコード 200
+- [x] id=1 のシラバスデータ
+- [x] 全フィールド存在 (24フィールド)
+- [x] class_sessions ネスト (3件)
+
+### レスポンス概要
+```json
+{
+  "id": 1,
+  "subject_name": "Python応用(Django)②",
+  "teacher_name": "鈴木亮",
+  "academic_year": 2025,
+  "semester": "後期",
+  "num_sessions": 30,
+  "eligible_departments": ["高度情報工学科", "総合システム工学科", "情報システム科"],
+  "class_sessions": [3 items],
+  "created_at": "2025-12-16T15:00:00Z",
+  "updated_at": "2025-12-16T15:00:00Z"
+}
+```
 
 ## 8.3: POST /api/syllabi/ - シラバス作成
 
