@@ -1,49 +1,119 @@
 実装内容 (ver 0.1)
 
-GET /api/v1/syllabuses/
-- シラバス（Syllabus）の一覧を返す
-- ページネーション（Pagination）に対応する
+Django REST framework を使って
 
-GET /api/v1/syllabuses/{id}/
-- 特定のシラバスの詳細を返す
+機能			HTTPメソッド	URL				説明					リクエストボディ			レスポンス
+シラバス一覧取得	GET		/api/syllabi			すべてのシラバスを取得する		なし					シラバスの配列
+シラバス詳細取得	GET		/api/syllabi/{id}		指定IDのシラバスを取得する		なし					シラバス1件
+シラバス登録		POST		/api/syllabi			新しいシラバスを追加する		JSON（タイトル、概要など）		登録されたシラバス
+シラバス更新		PUT		/api/syllabi/{id}		指定IDのシラバスを全更新する		JSON（全フィールド）			更新後のシラバス
+シラバス部分更新	PATCH		/api/syllabi/{id}		指定IDのシラバスを部分更新する	JSON（変更部分のみ）			更新後のシラバス
+シラバス削除		DELETE		/api/syllabi/{id}		指定IDのシラバスを削除する		なし					ステータス（204 No Content）
 
-POST /api/v1/syllabuses/
-- 新しいシラバスを作成する
-- 認証（Authentication）が必要
-
-PUT /api/v1/syllabuses/{id}/
-- 特定のシラバスを更新する
-- 認証が必要
-
-PATCH /api/v1/syllabuses/{id}/
-- 特定のシラバスを部分的に更新する
-- 認証が必要
-
-DELETE /api/v1/syllabuses/{id}/
-- 特定のシラバスを削除する
-- 認証が必要
+の RESTful な API を実装していく
 
 
-シラバス詳細 ページ に掲載したい内容 (データ項目)
 
-- "id": 1,
-- "title_ja": "プログラミング応用",
-- "title_en": "Applied Programming",
-- "teacher_name": "田村 浩士",
-- "school_year": 2,
-- "semester": "後期",
-- "num_credits": 2,
-- "target_grade": "2年",
-- "course_type": "専門科目",
-- "overview_ja": "Django REST Framework を使った Web API 開発...",
-- "overview_en": "Developing Web APIs using Django REST Framework...",
-- "prerequisites_ja": "プログラミング基礎",
-- "prerequisites_en": "Fundamentals of Programming",
-- "textbook": "指定なし",
-- "reference_book": "公式ドキュメント",
-- "grading_policy_ja": "最終課題 60%, 中間課題 40%",
-- "grading_policy_en": "Final Project 60%, Midterm Assignments 40%",
-- "notes_ja": "AIを積極的に活用すること",
-- "notes_en": "Actively utilize AI",
-- "created_at": "2025-10-29T10:00:00+09:00",
-- "updated_at": "2025-10-29T10:00:00+09:00"
+シラバス詳細 ページ に掲載したい内容
+
+科目名
+Python応用(Django)②	
+
+
+学則科目名
+システム開発演習
+
+
+担当教員
+鈴木亮	
+
+
+講師区分
+実務教員
+
+
+授業方法
+講義&演習	
+
+
+授業コマ数
+30	
+
+
+推奨履修年次
+2年～
+
+
+履修分類
+必修選択	
+
+
+開講年度
+2025	
+
+
+開講期間
+後期
+
+
+履修可能学科
+高度情報工学科, 総合システム工学科, 情報システム科
+
+
+授業概要
+まずDjango で RESTful API が作れること。次にDjango 以外のフレームワークでも RESTful API を構築できること。
+
+
+到達目標
+RESTful の概念を理解すること。RESTful API の仕様を定義できること。Django で RESTful API が作れること。RESTful APIのテストを書けること。
+
+
+成績評価の前提条件
+出席率が80%以上であること、および、各評価項目がすべて「可」以上であること
+
+
+成績評価基準
+課題の内容評価(50%), 課題提出率(30%), 出席率(20%)
+
+
+授業外に必要な学習内容
+-
+
+
+教材
+なし
+
+
+検定
+なし
+
+
+教材費
+なし
+
+検定費
+なし
+
+
+履修にあたっての留意点
+本校の「Python応用(Django)①」を履修していること。または、それに当たる能力を有していること。(履修登録する前に教員に相談すること。)
+
+
+備考
+-
+
+コマシラバス一覧
+
+順番	コマ数	内容
+1	1コマ	オリエンテーション、環境構築
+2	1コマ	RESTful とは何か
+3	1コマ	RESTful APIとは何か
+4	3コマ	RESTful APIの仕様を定義する
+5	5コマ	RESTful API のテストコードを書く
+6	5コマ	Django で RESTful API を作る
+7	3コマ	Flask で RESTful API を作る
+8	3コマ	Hono で RESTful API を作る
+9	2コマ	APIの認証
+10	2コマ	APIをLinuxサーバーで動かす
+11	2コマ	APIをサーバーレス環境で動かす
+12	2コマ	APIをコンテナ化する

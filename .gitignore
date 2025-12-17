@@ -2,6 +2,14 @@
 __pycache__/
 *.py[cod]
 *$py.class
+*.so
+.Python
+
+# Virtual Environment
+.venv/
+venv/
+ENV/
+env/
 
 # Django
 *.log
@@ -10,9 +18,19 @@ db.sqlite3-journal
 /staticfiles/
 /media/
 
-# Virtual Environment
-.venv/
-venv/
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
 
-# Editor files
-nano.*.save
+# OS
+.DS_Store
+Thumbs.db
+
+# Python version management
+.python-version
+
+# uv
+.uv/
