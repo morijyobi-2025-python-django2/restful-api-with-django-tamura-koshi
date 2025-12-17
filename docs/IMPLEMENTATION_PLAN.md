@@ -630,7 +630,7 @@ git commit -m "feat: Implement Syllabus API
 - [x] Phase 5 完了 (PR #14: URL・Settings設定)
 - [x] Phase 6 完了 (PR #14: 管理画面設定)
 - [x] Phase 7 完了 (PR #15: テストデータ作成)
-- [ ] Phase 8 完了
+- [x] Phase 8 完了 (PR #16予定: API動作確認)
 - [ ] Phase 9 完了
 
 ### 完了後
