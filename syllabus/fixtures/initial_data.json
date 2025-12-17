@@ -1,0 +1,62 @@
+[
+  {
+    "model": "syllabus.syllabus",
+    "pk": 1,
+    "fields": {
+      "subject_name": "Python応用(Django)②",
+      "regulation_subject_name": "システム開発演習",
+      "teacher_name": "鈴木亮",
+      "instructor_type": "実務教員",
+      "teaching_method": "講義&演習",
+      "num_sessions": 30,
+      "recommended_grade": "2年～",
+      "enrollment_classification": "必修選択",
+      "academic_year": 2025,
+      "semester": "後期",
+      "eligible_departments": ["高度情報工学科", "総合システム工学科", "情報システム科"],
+      "course_overview": "まずDjango で RESTful API が作れること。次にDjango 以外のフレームワークでも RESTful API を構築できること。",
+      "learning_objectives": "RESTful の概念を理解すること。RESTful API の仕様を定義できること。Django で RESTful API が作れること。RESTful APIのテストを書けること。",
+      "grading_prerequisites": "出席率が80%以上であること、および、各評価項目がすべて「可」以上であること",
+      "grading_criteria": "課題の内容評価(50%), 課題提出率(30%), 出席率(20%)",
+      "required_study_outside_class": "-",
+      "textbook": "なし",
+      "certification": "なし",
+      "textbook_cost": "なし",
+      "certification_cost": "なし",
+      "notes": "本校の「Python応用(Django)①」を履修していること。または、それに当たる能力を有していること。(履修登録する前に教員に相談すること。)",
+      "remarks": "-",
+      "created_at": "2025-12-17T00:00:00+09:00",
+      "updated_at": "2025-12-17T00:00:00+09:00"
+    }
+  },
+  {
+    "model": "syllabus.classsession",
+    "pk": 1,
+    "fields": {
+      "syllabus": 1,
+      "order": 1,
+      "num_sessions": 1,
+      "content": "オリエンテーション、環境構築"
+    }
+  },
+  {
+    "model": "syllabus.classsession",
+    "pk": 2,
+    "fields": {
+      "syllabus": 1,
+      "order": 2,
+      "num_sessions": 2,
+      "content": "Django基礎、モデル・ビュー・テンプレートの理解"
+    }
+  },
+  {
+    "model": "syllabus.classsession",
+    "pk": 3,
+    "fields": {
+      "syllabus": 1,
+      "order": 3,
+      "num_sessions": 2,
+      "content": "REST API実装、Django REST frameworkの基本"
+    }
+  }
+]
