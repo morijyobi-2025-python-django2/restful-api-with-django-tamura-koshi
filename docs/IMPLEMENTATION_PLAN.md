@@ -617,19 +617,19 @@ git commit -m "feat: Implement Syllabus API
 ## 7. チェックリスト
 
 ### 実装前
-- [ ] openapi.yaml を確認
-- [ ] design.md を確認
-- [ ] 既存コードをバックアップ
-- [ ] 作業ブランチを作成
+- [x] openapi.yaml を確認
+- [x] design.md を確認
+- [x] 既存コードをバックアップ
+- [x] 作業ブランチを作成
 
 ### 実装中
-- [ ] Phase 1 完了
-- [ ] Phase 2 完了
-- [ ] Phase 3 完了
-- [ ] Phase 4 完了
-- [ ] Phase 5 完了
-- [ ] Phase 6 完了
-- [ ] Phase 7 完了
+- [x] Phase 1 完了 (PR #13: ドキュメント作成)
+- [x] Phase 2 完了 (PR #14: モデル実装)
+- [x] Phase 3 完了 (PR #14: シリアライザー実装)
+- [x] Phase 4 完了 (PR #14: ビュー実装)
+- [x] Phase 5 完了 (PR #14: URL・Settings設定)
+- [x] Phase 6 完了 (PR #14: 管理画面設定)
+- [x] Phase 7 完了 (PR #15: テストデータ作成)
 - [ ] Phase 8 完了
 - [ ] Phase 9 完了
 
